@@ -1,0 +1,47 @@
+.sort-btns {
+  margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.sort-btns .btn {
+  background-color: #2980B9 !important;
+  color: #ECF0F1;
+}
+
+.sort-btns .btn:hover {
+  opacity: 0.8;
+}
+
+#array-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  min-height: 500px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+#array-container .num-block {
+  width: 5px;
+  background-color: #E74C3C;
+  border: 1px solid black;
+}
+
+#array-container .num-block.selected {
+  background-color: #3498DB;
+}
+/*# sourceMappingURL=SortingVisualizer.css.map */

@@ -1,0 +1,30 @@
+.sort-btns {
+    .btn {
+        background-color: #2980B9 !important;
+        color: #ECF0F1;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+#array-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    .num-block {
+        width: 5px;
+        background-color: #E74C3C;
+        border: 1px solid black;
+    }
+    .num-block.selected {
+        background-color: #3498DB;
+    }
+}

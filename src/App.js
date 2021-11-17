@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, {useEffect, useState} from "react";
+import SortingVisualizer from "./Components/SortingVisualizer";
 function App() {
+  const [numArr, setNumArr] = useState([])
+  useEffect(() => {
+      let arr = []
+      for(let i=0; i<300; i++) {
+          const num = Math.floor(Math.random() * 500) + 1
+          arr.push(num);
+      }
+      setNumArr(arr);
+  }, [])
+  const generateArr = () => {
+    let arr = []
+      for(let i=0; i<300; i++) {
+          const num = Math.floor(Math.random() * 500) + 1
+          arr.push(num);
+      }
+      setNumArr(arr);
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SortingVisualizer arr={numArr} generateArr={generateArr}/>
     </div>
   );
 }
