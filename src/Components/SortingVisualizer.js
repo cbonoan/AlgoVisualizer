@@ -4,7 +4,13 @@ import * as sortingAlgos from './SortingAlgos';
 import '../Styles/SortingVisualizer.scss';
 
 function SortingVisualizer(props) {
-    
+    const resetArr = () => {
+        props.generateArr();
+        const numBars = document.getElementsByClassName('num-block');
+        for(let i=0; i<numBars.length; i++) {
+            numBars[i].classList.remove('selected');
+        }
+    }
 
     // eslint-disable-next-line
     const testTraversal = () => {
@@ -23,7 +29,20 @@ function SortingVisualizer(props) {
         }
     }
 
+    const disableBtns = (s) => {
+        const btns = document.getElementsByClassName('btn')
+        for(let i=0; i<btns.length; i++) {
+            btns[i].disabled = true;
+        }
+        setTimeout(() => {
+            for(let i=0; i<btns.length; i++) {
+                btns[i].disabled = false;
+            }
+        }, s)
+    }
+
     const bubbleSort = () => {
+        disableBtns(8200);
         const animations = sortingAlgos.bubbleSort(props.arr);
         console.log(animations);
         for(let i=0; i<animations.length; i++) {
@@ -40,16 +59,18 @@ function SortingVisualizer(props) {
                     arrBars[comparison[1]].style.height = `${height1}px`;
                     arrBars[comparison[0]].style.height = `${height2}px`;
                 }
-                setTimeout(() => {
-                    arrBars[comparison[0]].classList.toggle('selected');
-                    arrBars[comparison[1]].classList.toggle('selected');
-                }, i*0.001)
-                
-            }, i*5);
+                // setTimeout(() => {
+                //     arrBars[comparison[0]].classList.toggle('selected');
+                //     arrBars[comparison[1]].classList.toggle('selected');
+                // }, i*1000)
+            }, i*0.1);
         }
+        
+        
     }
 
     const selectionSort = () => {
+        disableBtns(3000);
         for(let i=0; i<props.arr.length; i++) {
             setTimeout(() => {
                 const arrBars = document.getElementsByClassName('num-block');
@@ -74,11 +95,11 @@ function SortingVisualizer(props) {
     return(
         <div className="container">
             <div className="sort-btns">
-                <button className="btn" onClick={props.generateArr}>Generate New Array</button>
-                <button className="btn" onClick={bubbleSort}>Bubble Sort</button>
-                <button className="btn" onClick={selectionSort}>Selection Sort</button>
-                <button className="btn" onClick={bubbleSort}>Merge Sort</button>
-                <button className="btn" onClick={bubbleSort}>Quick Sort</button>
+                <button type="button" className="btn" onClick={resetArr}>Generate New Array</button>
+                <button type="button" className="btn" onClick={bubbleSort}>Bubble Sort</button>
+                <button type="button" className="btn" onClick={selectionSort}>Selection Sort</button>
+                <button type="button" className="btn" onClick={bubbleSort}>Merge Sort</button>
+                <button type="button" className="btn" onClick={bubbleSort}>Quick Sort</button>
             </div>
             
             <div className="container-fluid" id="array-container">
