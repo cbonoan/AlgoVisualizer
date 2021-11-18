@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import * as sortingAlgos from './SortingAlgos';
 
 import '../Styles/SortingVisualizer.scss';
@@ -35,13 +35,39 @@ function SortingVisualizer(props) {
 
                 arrBars[comparison[0]].classList.toggle('selected');
                 arrBars[comparison[1]].classList.toggle('selected');
+
                 if(height1 > height2) {
                     arrBars[comparison[1]].style.height = `${height1}px`;
                     arrBars[comparison[0]].style.height = `${height2}px`;
                 }
-                // arrBars[comparison[0]].classList.toggle('selected');
-                // arrBars[comparison[1]].classList.toggle('selected');
-            }, i*2)
+                setTimeout(() => {
+                    arrBars[comparison[0]].classList.toggle('selected');
+                    arrBars[comparison[1]].classList.toggle('selected');
+                }, i*0.001)
+                
+            }, i*5);
+        }
+    }
+
+    const selectionSort = () => {
+        for(let i=0; i<props.arr.length; i++) {
+            setTimeout(() => {
+                const arrBars = document.getElementsByClassName('num-block');
+                arrBars[i].classList.toggle('selected');
+                let tmpHeight = arrBars[i].offsetHeight;
+                let minHeight = arrBars[i].offsetHeight;
+                let swapPos = i; 
+                setTimeout(() => {
+                    for(let j=i+1; j<props.arr.length; j++) {
+                        if(arrBars[j].offsetHeight < minHeight) {
+                            minHeight = arrBars[j].offsetHeight;
+                            swapPos = j; 
+                        }
+                    }
+                    arrBars[i].style.height = `${minHeight}px`;
+                    arrBars[swapPos].style.height = `${tmpHeight}px`;
+                }, i*0.01)
+            }, i*10)
         }
     }
 
@@ -50,7 +76,7 @@ function SortingVisualizer(props) {
             <div className="sort-btns">
                 <button className="btn" onClick={props.generateArr}>Generate New Array</button>
                 <button className="btn" onClick={bubbleSort}>Bubble Sort</button>
-                <button className="btn" onClick={bubbleSort}>Selection Sort</button>
+                <button className="btn" onClick={selectionSort}>Selection Sort</button>
                 <button className="btn" onClick={bubbleSort}>Merge Sort</button>
                 <button className="btn" onClick={bubbleSort}>Quick Sort</button>
             </div>

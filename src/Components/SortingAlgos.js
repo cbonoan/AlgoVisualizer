@@ -18,3 +18,13 @@ export function bubbleSort(array) {
     }
     return animations
 }
+
+export function selectionSort(array) {
+    const animations = [] 
+    for(let i=0; i<array.length; i++) {
+        for(let j=i+1; j<array.length; j++) {
+            animations.push([i,j])
+        }
+    }
+    return animations
+}
