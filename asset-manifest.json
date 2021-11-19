@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/AlgoVisualizer/static/css/main.d7f6578f.chunk.css",
-    "main.js": "/AlgoVisualizer/static/js/main.7b465648.chunk.js",
-    "main.js.map": "/AlgoVisualizer/static/js/main.7b465648.chunk.js.map",
+    "main.css": "/AlgoVisualizer/static/css/main.2654e90d.chunk.css",
+    "main.js": "/AlgoVisualizer/static/js/main.bb25b10f.chunk.js",
+    "main.js.map": "/AlgoVisualizer/static/js/main.bb25b10f.chunk.js.map",
     "runtime-main.js": "/AlgoVisualizer/static/js/runtime-main.2e331cb9.js",
     "runtime-main.js.map": "/AlgoVisualizer/static/js/runtime-main.2e331cb9.js.map",
-    "static/js/2.3abbe3c6.chunk.js": "/AlgoVisualizer/static/js/2.3abbe3c6.chunk.js",
-    "static/js/2.3abbe3c6.chunk.js.map": "/AlgoVisualizer/static/js/2.3abbe3c6.chunk.js.map",
+    "static/js/2.7cf5b6db.chunk.js": "/AlgoVisualizer/static/js/2.7cf5b6db.chunk.js",
+    "static/js/2.7cf5b6db.chunk.js.map": "/AlgoVisualizer/static/js/2.7cf5b6db.chunk.js.map",
     "static/js/3.a0848031.chunk.js": "/AlgoVisualizer/static/js/3.a0848031.chunk.js",
     "static/js/3.a0848031.chunk.js.map": "/AlgoVisualizer/static/js/3.a0848031.chunk.js.map",
     "index.html": "/AlgoVisualizer/index.html",
-    "static/css/main.d7f6578f.chunk.css.map": "/AlgoVisualizer/static/css/main.d7f6578f.chunk.css.map",
-    "static/js/2.3abbe3c6.chunk.js.LICENSE.txt": "/AlgoVisualizer/static/js/2.3abbe3c6.chunk.js.LICENSE.txt"
+    "static/css/main.2654e90d.chunk.css.map": "/AlgoVisualizer/static/css/main.2654e90d.chunk.css.map",
+    "static/js/2.7cf5b6db.chunk.js.LICENSE.txt": "/AlgoVisualizer/static/js/2.7cf5b6db.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2e331cb9.js",
-    "static/js/2.3abbe3c6.chunk.js",
-    "static/css/main.d7f6578f.chunk.css",
-    "static/js/main.7b465648.chunk.js"
+    "static/js/2.7cf5b6db.chunk.js",
+    "static/css/main.2654e90d.chunk.css",
+    "static/js/main.bb25b10f.chunk.js"
   ]
 }
