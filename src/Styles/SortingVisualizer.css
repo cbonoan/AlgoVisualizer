@@ -11,6 +11,7 @@
 .sort-btns .btn {
   background-color: #2980B9 !important;
   color: #ECF0F1;
+  z-index: 99;
 }
 
 .sort-btns .btn:hover {
@@ -18,7 +19,7 @@
 }
 
 #array-container {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -30,13 +31,13 @@
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #array-container .num-block {
-  width: 5px;
+  width: 2px;
   background-color: #E74C3C;
 }
 

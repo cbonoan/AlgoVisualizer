@@ -1,22 +1,20 @@
 import React, {useEffect, useState} from "react";
 import SortingVisualizer from "./Components/SortingVisualizer";
+
+const NUM_ARR_LENGTH = 300;
 function App() {
   const [numArr, setNumArr] = useState([])
   useEffect(() => {
-      let arr = []
-      for(let i=0; i<300; i++) {
-          const num = Math.floor(Math.random() * 500) + 1
-          arr.push(num);
-      }
-      setNumArr(arr);
+      generateArr();
   }, [])
+
   const generateArr = () => {
     let arr = []
-      for(let i=0; i<300; i++) {
-          const num = Math.floor(Math.random() * 500) + 1
-          arr.push(num);
-      }
-      setNumArr(arr);
+    for(let i=0; i<NUM_ARR_LENGTH; i++) {
+        const num = Math.floor(Math.random() * 500) + 5
+        arr.push(num);
+    }
+    setNumArr(arr);
   }
   return (
     <div className="App">

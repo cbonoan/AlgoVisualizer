@@ -5,22 +5,23 @@
         &:hover {
             opacity: 0.8;
         }
+        z-index: 99;
     }
     margin-top: 50px;
     display: flex;
     justify-content: space-evenly;
 }
 #array-container {
-    position: absolute;
+    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     min-height: 500px;
     display: flex;
     justify-content: space-evenly;
-    align-items: flex-end;
+    align-items: center;
     .num-block {
-        width: 5px;
+        width: 2px;
         background-color: #E74C3C;
     }
     .num-block.selected {

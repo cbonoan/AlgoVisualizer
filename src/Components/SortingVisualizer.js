@@ -3,6 +3,9 @@ import * as sortingAlgos from './SortingAlgos';
 
 import '../Styles/SortingVisualizer.scss';
 
+const SELECTED_COLOR = "#3498DB";
+const NOT_SELECTED = "#E74C3C";
+
 function SortingVisualizer(props) {
     const resetArr = () => {
         props.generateArr();
@@ -29,23 +32,24 @@ function SortingVisualizer(props) {
         }
     }
 
-    const disableBtns = (s) => {
+    const disableBtns = () => {
         const btns = document.getElementsByClassName('btn')
         for(let i=0; i<btns.length; i++) {
             btns[i].disabled = true;
         }
-        setTimeout(() => {
-            for(let i=0; i<btns.length; i++) {
-                btns[i].disabled = false;
-            }
-        }, s)
+    }
+    const enableBtns = () => {
+        const btns = document.getElementsByClassName('btn')
+        for(let i=0; i<btns.length; i++) {
+            btns[i].disabled = false;
+        }
     }
 
     const bubbleSort = () => {
-        disableBtns(8200);
+        disableBtns();
         const animations = sortingAlgos.bubbleSort(props.arr);
-        console.log(animations);
-        for(let i=0; i<animations.length; i++) {
+        let i = 0;
+        for(i=0; i<animations.length; i++) {
             const comparison = animations[i]
             setTimeout(() => {
                 const arrBars = document.getElementsByClassName('num-block');
@@ -59,18 +63,16 @@ function SortingVisualizer(props) {
                     arrBars[comparison[1]].style.height = `${height1}px`;
                     arrBars[comparison[0]].style.height = `${height2}px`;
                 }
-                // setTimeout(() => {
-                //     arrBars[comparison[0]].classList.toggle('selected');
-                //     arrBars[comparison[1]].classList.toggle('selected');
-                // }, i*1000)
-            }, i*0.1);
+            }, 0);
         }
-        
-        
+        setTimeout(() => {
+            enableBtns();
+        }, i*0.01);
     }
 
     const selectionSort = () => {
-        disableBtns(3000);
+        disableBtns();
+        let j = 0;
         for(let i=0; i<props.arr.length; i++) {
             setTimeout(() => {
                 const arrBars = document.getElementsByClassName('num-block');
@@ -78,28 +80,59 @@ function SortingVisualizer(props) {
                 let tmpHeight = arrBars[i].offsetHeight;
                 let minHeight = arrBars[i].offsetHeight;
                 let swapPos = i; 
-                setTimeout(() => {
-                    for(let j=i+1; j<props.arr.length; j++) {
-                        if(arrBars[j].offsetHeight < minHeight) {
-                            minHeight = arrBars[j].offsetHeight;
-                            swapPos = j; 
-                        }
+                for(let j=i+1; j<props.arr.length; j++) {
+                    if(arrBars[j].offsetHeight < minHeight) {
+                        minHeight = arrBars[j].offsetHeight;
+                        swapPos = j; 
                     }
-                    arrBars[i].style.height = `${minHeight}px`;
-                    arrBars[swapPos].style.height = `${tmpHeight}px`;
-                }, i*0.01)
+                }
+                arrBars[i].style.height = `${minHeight}px`;
+                arrBars[swapPos].style.height = `${tmpHeight}px`;
             }, i*10)
+            j++;
         }
+        setTimeout(() => {
+            enableBtns();
+        }, j*10);
+    }
+
+    const mergeSort = () => {
+        disableBtns();
+        // console.log(sortingAlgos.getMergeSortAnims(props.arr));
+        const anims = sortingAlgos.getMergeSortAnims(props.arr);
+        console.log(anims)
+        let i = 0;
+        for(i=0; i < anims.length; i++) {
+            const arrBars = document.getElementsByClassName('num-block');
+            const swap = i % 3 !== 2;
+            if(swap) {
+                const [barOne, barTwo] = anims[i];
+                const color = i % 3 === 0 ? NOT_SELECTED : SELECTED_COLOR;
+                setTimeout(() => {
+                    arrBars[barOne].style.backgroundColor = color;
+                    arrBars[barTwo].style.backgroundColor = color;
+                }, i*10)
+            } else {
+                const [barOne, newHeight] = anims[i];
+                setTimeout(() => {
+                    arrBars[barOne].style.height = `${newHeight}px`;
+                }, i*10);
+            }
+            
+        }
+        setTimeout(() => {
+            enableBtns();
+        }, i*10)
     }
 
     return(
         <div className="container">
             <div className="sort-btns">
                 <button type="button" className="btn" onClick={resetArr}>Generate New Array</button>
-                <button type="button" className="btn" onClick={bubbleSort}>Bubble Sort</button>
-                <button type="button" className="btn" onClick={selectionSort}>Selection Sort</button>
-                <button type="button" className="btn" onClick={bubbleSort}>Merge Sort</button>
+                <button type="button" className="btn" onClick={mergeSort}>Merge Sort</button>
                 <button type="button" className="btn" onClick={bubbleSort}>Quick Sort</button>
+                <button type="button" className="btn" onClick={selectionSort}>Selection Sort</button>
+                <button type="button" className="btn" onClick={bubbleSort}>Bubble Sort</button>
             </div>
             
             <div className="container-fluid" id="array-container">
